@@ -1,0 +1,110 @@
+<?php
+session_start();
+include 'connection.php';
+$select = "SELECT img FROM admin WHERE username='".$_SESSION['uname']."'";
+$query = mysqli_query($connect,$select);
+while ($fetch=mysqli_fetch_assoc($query)) {
+    
+?>
+    
+    
+    
+    
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css"> 
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="images/mega.png" type="image/x-icon">
+    
+<nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="images/mega.png" alt="">
+            </div>
+
+            <span class="logo_name">MegaConst</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="index.php">
+                    <i class='fas fa-home'></i>
+                    <span class="link-name">Dahsboard</span>
+                </a></li>
+                <li><a href="employee.php">
+                    <i class='fas fa-user'></i>
+                    <span class="link-name">Employees</span>
+                </a></li>
+                <li><a href="register.php">
+                    <i class='fas fa-registered'></i>
+                    <span class="link-name">Registration</span>
+                </a></li>
+                <li><a href="report.php">
+                    <i class='fas fa-file-archive'></i>
+                    <span class="link-name">Report</span>
+                </a></li>
+                <li><a href="attendance.php">
+                    <i class='fas fa-file-alt'></i>
+                    <span class="link-name">Attendance</span>
+                </a></li>
+                <li><a href="arrival.php">
+                    <i class='fas fa-clock'></i>
+                    <span class="link-name">Arrival/Departure</span>
+                </a></li>
+                <li><a href="manage.php">
+                    <i class='fas fa-business-time'></i>
+                    <span class="link-name">Payment</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="logout.php">
+                    <i class='fas fa-sign-out-alt'></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class='fas fa-moon'></i>
+                        <span class="link-name">Dark Mode</span>
+                    </a>  
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="fas fa-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class='fas fa-search'></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+            <a href="#"  onclick="openPop()">
+              <?php
+                  echo "<img src='new_upload/".$fetch['img']."'>";
+              ?>
+            </a>
+            <!-- <div class="popup" id="popup">
+				<img src="tic.png">
+				<h2>Thank You!</h2>
+				<p>Thank you for Subscribing to our Website. It's honor!</p>
+				<button class="btn" onclick="closePop()">OK</button>
+			</div> -->
+            <script type="text/javascript">
+				let popup = document.getElementById("popup");
+				function openPop(){
+					popup.classList.add("open-pop");
+				}
+				function closePop(){
+					popup.classList.remove("open-pop");
+				}
+			</script>
+        </div>
+ <?php
+    }
+?>
